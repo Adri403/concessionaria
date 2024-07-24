@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Meu Projeto</title>
+</head>
+<body>
+    <h1>Bem-vindo ao Meu Projeto</h1>
+    <div id="items"></div>
+
+    <script>
+        async function fetchItems() {
+            try {
+                const response = await fetch('http://localhost:3000/api/items');
+                const items = await response.json();
+                const itemsDiv = document.getElementById('items');
+                itemsDiv.innerHTML = items.map(item => `<p>${item.name}: ${item.quantity}</p>`).join('');
+            } catch (error) {
+                console.error('Erro ao buscar itens:', error);
+            }
+        }
+
+        fetchItems();
+    </script>
+</body>
+</html>

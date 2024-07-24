@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 function buyOrFinance() {
-  window.location.href = 'servicos.html';
+  window.location.href = "/front/servicos.html";
 }
 function calculateFinancing() {
   const carModel = document.getElementById('carModel').value;
@@ -83,11 +83,13 @@ function calculateFinancing() {
         interestRate = 1.1; // 10% de juros para valores altos
       }
 
+      const valordocarro = carPrice
+      const valordocarrotext = `Valor do carro: R$ ${valordocarro.toFixed(2)}<br>`;
       const financedTotalValue = financedValue * interestRate;
-      const financingText = `Valor a ser financiado: R$ ${financedTotalValue.toFixed(2)}<br>`;
+      const financingText = `Valor do financiamento: R$ ${financedTotalValue.toFixed(2)}<br>`;
       const cashValue = carPrice - financedValue;
-      const cashText = `Valor para pagamento à vista: R$ ${cashValue.toFixed(2)}`;
-      financingResult.innerHTML = financingText + cashText;
+      const cashText = `Valor de entrada: R$ ${cashValue.toFixed(2)}`;
+      financingResult.innerHTML = valordocarrotext + financingText + cashText;
     }
   } else {
     financingResult.innerText = 'Por favor, selecione um carro e insira um valor de entrada válido.';
